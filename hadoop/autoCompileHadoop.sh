@@ -5,6 +5,9 @@
 # steps:
 # javac -classpath hadoop-*-core.jar -d MyJavaDir MyCode.java
 # jar -cvf MyJar.jar -C Δ MyJavaDir .
+
+# ./autoCompileHadoop.sh /opt/hadoop-2.2.0-quick/share/hadoop/common/hadoop-common-2.2.0.jar:/opt/hadoop-2.2.0-quick/share/hadoop/mapreduce/hadoop-mapreduce-client-core-2.2.0.jar wc2  ~/Documents/Workspace/HBasePreTask/src/foxconn/swd/cloud/hbase/pretask/WordCount.java
+
 function javaCompile(){
     echo "Start Java Compile"
     echo "javac -classpath $hadoopCorePath -d /tmp/hadoopAutoCompile/$jobName $javaFile"
@@ -25,6 +28,7 @@ function main(){
       echo "usage: ./autoCompileHadoop hadoop-corePath jobName javaFile" 
       exit 0;
     fi
+
     if [ ! -f $hadoopCorePath ]; then
         echo "$hadoopCorePath not exist"
         exit 0;
